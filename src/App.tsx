@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
-import logo from './logo.png';
+const logo = "/logo.png";
 /* ── CONFIG ─────────────────────────────────────────────── */
 // Change this to your real launch date.
 const LAUNCH_DATE = new Date('2026-08-T00:00:00Z');
