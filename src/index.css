@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { background: #0B132B; color: #F3F4F6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+@layer utilities {
+  .text-grad {
+    background: linear-gradient(100deg, #2563EB, #06B6D4 50%, #22C55E);
+    background-size: 200% auto;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: pan 6s ease infinite;
+  }
+  .bg-grad { background: linear-gradient(100deg, #2563EB, #06B6D4 50%, #22C55E); }
+  .ring-grad { position: relative; }
+  .ring-grad::before {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+    background: linear-gradient(140deg, rgba(37,99,235,.6), rgba(6,182,212,.45), rgba(34,197,94,.5), rgba(255,255,255,.05));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+  }
+  .aurora { position: fixed; border-radius: 9999px; filter: blur(110px); opacity: .5; pointer-events: none; z-index: 0; animation: drift 18s ease-in-out infinite; }
+  .grid-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 54px 54px;
+    -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 40%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 60% 55% at 50% 40%, #000 30%, transparent 100%);
+  }
+  .dot { position: fixed; width: 6px; height: 6px; border-radius: 9999px; z-index: 0; animation: floatUp linear infinite; }
+  .cursor::after { content: '▍'; color: #06B6D4; animation: blink 1s steps(1) infinite; }
+}
+
+@keyframes pan { 0%,100% { background-position: 0% center; } 50% { background-position: 100% center; } }
+@keyframes drift { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-24px) scale(1.12); } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes floatUp { from { transform: translateY(0); opacity: 0; } 10% { opacity: .6; } 90% { opacity: .6; } to { transform: translateY(-100vh); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .text-grad, .aurora, .dot, .cursor::after { animation: none !important; }
+}
