@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
-const logo = "/logo.png";
 /* ── CONFIG ─────────────────────────────────────────────── */
 // Change this to your real launch date.
 const LAUNCH_DATE = new Date('2026-08-T00:00:00Z');
@@ -21,7 +20,7 @@ const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0
 /* ── Logo ───────────────────────────────────────────────── */
 function Logo() {
   return (
-    <img src={logo} alt="Mareura" className="h-14 w-14 object-contain" />
+    <img src="/logo.png" alt="Mareura" className="h-14 w-14 object-contain" />
   );
 }
 
